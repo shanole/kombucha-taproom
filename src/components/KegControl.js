@@ -7,7 +7,7 @@ class KegControl extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-      formVisibleonPage: false,
+      formVisibleOnPage: false,
       masterKegList: [
         {name: 'very berry', brand: 'shannon', price: '$7.00', flavor: 'blueberry', id: 0, quantity: 1},
         {name: 'clear mind', brand: 'brew dr', price: '$7.50', flavor: 'rosemary, mint, sage, and green tea', id: 1, quantity: 2},
@@ -16,6 +16,25 @@ class KegControl extends React.Component {
       selectedKeg: null
     };
   }
+
+  handleClick = () => {
+    if (this.state.selectedKeg != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedKeg: null,
+      });
+    } else {
+      this.setState( prevState => ({formVisibleOnPage: !prevState.formVisibleOnPage}));
+    }
+  }
+
+  handleNewFormSubmission = (newKeg) => {
+    const newMasterKegList = this.state.masterKegList.concat(newKeg);
+    this.setState({
+      masterKegList: newMasterKegList,
+      formVisibleOnPage: false });
+  }
+
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
@@ -23,8 +42,8 @@ class KegControl extends React.Component {
     if (this.selectedKeg != null) {
       currentlyVisibleState = <KegDetail keg = {this.state.selectedKeg} />
       buttonText = "Return to taproom";
-    } else if (this.state.formVisibleonPage) {
-      currentlyVisibleState = <NewKegForm />;
+    } else if (this.state.formVisibleOnPage) {
+      currentlyVisibleState = <NewKegForm onNewFormSubmit={this.handleNewFormSubmission}/>;
       buttonText = "Return to taproom";
     } else {
       currentlyVisibleState = <KegList kegList = {this.state.masterKegList}/>
@@ -33,7 +52,7 @@ class KegControl extends React.Component {
     return (
       <React.Fragment>
         {currentlyVisibleState}
-        <button className="btn btn-primary">{buttonText}</button>
+        <button className="btn btn-primary m-2" onClick={this.handleClick}>{buttonText}</button>
       </React.Fragment>
     )
   }

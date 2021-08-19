@@ -14,35 +14,47 @@ function ReusableForm(props) {
   }
 
   return (
-    <React.Fragment>
-    < form onSubmit={props.formSubmissionHandler}>
+  <React.Fragment>
+    <form onSubmit={props.formSubmissionHandler}>
+      <label>Name:</label>
       <input
       type='text'
       name='name'
+      id="name"
       defaultValue={name}
-      placeholder='Name' />
-    <input
-      type='text'
-      name='brand'
-      defaultValue={brand}
-      placeholder='Brand' />
-    <input
-      type='number'
-      name='price'
-      defaultValue={price}
-      placeholder='Price' />
-    <input
-      type='text'
-      name='flavor'
-      defaultValue={flavor}
-      placeholder='Flavor' />
-    <input
-      type='number'
-      name='quantity'
-      defaultValue={quantity}
-      placeholder='Quantity' />
-    <button type='submit'>{props.buttonText}</button>
-  </form>
+      placeholder='Name' 
+      className="form-control"/>
+      <label>Brand:</label>
+      <input
+        type='text'
+        name='brand'
+        defaultValue={brand}
+        placeholder='Brand' 
+        className="form-control"/>
+      <label>Price:</label>
+      <input
+        type='number'
+        name='price'
+        defaultValue={price}
+        placeholder='Price' 
+        className="form-control"/>
+      <label>Flavor:</label>
+      <input
+        type='text'
+        name='flavor'
+        defaultValue={flavor}
+        placeholder='Flavor' 
+        className="form-control"/>
+      <label>Quantity</label>
+      <input
+        type='number'
+        name='quantity'
+        defaultValue={quantity}
+        placeholder='Quantity' 
+        className="form-control"/>
+      <button className="btn btn-success m-2" type='submit'>{props.buttonText}</button>
+    </form>
+    <hr />
   </React.Fragment>
   );
 }
