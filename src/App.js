@@ -1,6 +1,6 @@
-import './App.css';
 import React from 'react';
 import Navbar from './components/Navbar.js'
+import KegControl from './components/KegControl.js'
 
 function App() {
   return (
