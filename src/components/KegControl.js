@@ -35,23 +35,29 @@ class KegControl extends React.Component {
       formVisibleOnPage: false });
   }
 
+  handleSelect = (id) => {
+    const selectedKeg = this.state.masterKegList.filter(k => k.id === id)[0];
+    this.setState({selectedKeg: selectedKeg});
+  }
+
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
 
-    if (this.selectedKeg != null) {
+    if (this.state.selectedKeg != null) {
       currentlyVisibleState = <KegDetail keg = {this.state.selectedKeg} />
       buttonText = "Return to taproom";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewKegForm onNewFormSubmit={this.handleNewFormSubmission}/>;
       buttonText = "Return to taproom";
     } else {
-      currentlyVisibleState = <KegList kegList = {this.state.masterKegList}/>
+      currentlyVisibleState = <KegList kegList = {this.state.masterKegList} onKegSelect={this.handleSelect}/>
       buttonText = "Add new keg";
     }
     return (
       <React.Fragment>
         {currentlyVisibleState}
+        <hr />
         <button className="btn btn-primary m-2" onClick={this.handleClick}>{buttonText}</button>
       </React.Fragment>
     )

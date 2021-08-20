@@ -54,7 +54,6 @@ function ReusableForm(props) {
         className="form-control"/>
       <button className="btn btn-success m-2" type='submit'>{props.buttonText}</button>
     </form>
-    <hr />
   </React.Fragment>
   );
 }
