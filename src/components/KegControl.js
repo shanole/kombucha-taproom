@@ -9,9 +9,9 @@ class KegControl extends React.Component {
     this.state={
       formVisibleOnPage: false,
       masterKegList: [
-        {name: 'very berry', brand: 'shannon', price: '$7.00', flavor: 'blueberry', id: 'sdfsdfsdf', quantity: '1'},
-        {name: 'clear mind', brand: 'brew dr', price: '$7.50', flavor: 'rosemary, mint, sage, and green tea', id: 'sdfdsfdsfdsfsf', quantity: '2'},
-        {name: 'pina colada', brand: 'shannon', price: '$8.00', flavor: 'pineapple', id: 'sdfsdfdsfdsfsdfdsf', quantity: '3'}
+        {name: 'very berry', brand: 'shannon', price: '$7.00', flavor: 'blueberry', id: 'sdfsdfsdf', quantity: '1', pints: 124},
+        {name: 'clear mind', brand: 'brew dr', price: '$7.50', flavor: 'rosemary, mint, sage, and green tea', id: 'sdfdsfdsfdsfsf', quantity: '2', pints: 248},
+        {name: 'pina colada', brand: 'shannon', price: '$8.00', flavor: 'pineapple', id: 'sdfsdfdsfdsfsdfdsf', quantity: '3', pints: 372}
       ],
       selectedKeg: null
     };
@@ -42,14 +42,21 @@ class KegControl extends React.Component {
 
   handleSellKeg = (id) => {
     const thisKeg = this.state.masterKegList.filter(k => k.id === id)[0];
-    let currQuantity = thisKeg.quantity;
-    const newKeg = {...thisKeg, quantity: (currQuantity-1).toString()};
-    const newMasterKegList = this.state.masterKegList
-      .filter(k => k.id !== id)
-      .concat(newKeg);
-    this.setState({ masterKegList: newMasterKegList })
-  }
+    const index = this.state.masterKegList.indexOf(thisKeg);
+    let currPint = thisKeg.pints;
 
+    if (currPint > 0 ) {
+      const newPints = currPint-1;
+      let newKeg = {...thisKeg, pints: newPints};   
+      if (newPints % 124 === 0) {
+        newKeg.quantity = (newKeg.quantity-1).toString();
+      }
+      let newMasterKegList = [...this.state.masterKegList];
+      newMasterKegList[index] = newKeg;
+      this.setState({ masterKegList: newMasterKegList })
+    }
+  }
+  
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;

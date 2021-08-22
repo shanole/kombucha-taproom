@@ -5,27 +5,14 @@ import PropTypes from 'prop-types';
 class KegProgress extends React.Component {
   constructor(props) {
     super(props)
-    this.state= { 
-      maxKeg: parseInt(props.kegs)*124,
-      currentKeg: parseInt(props.kegs)*124};
-  }
-
-  handleDecrement = () => {
-    let currentKeg = this.state.currentKeg;
-    if (currentKeg > 0) {
-      currentKeg--;
-      this.setState({ currentKeg });
-      if (currentKeg %124 === 0) {
-        this.props.updateKegs(this.props.id)
-      }
-    }
+    this.state= { maxKeg: parseInt(props.kegs)*124 };
   }
 
   render() {
     return (
       <React.Fragment>
-        <ProgressBar variant='warning' now={this.state.currentKeg} max={this.state.maxKeg} label={`${this.state.currentKeg} pints`}/>
-        <button onClick={this.handleDecrement} type="button" className="btn btn-info mt-2 bt-2">Sell</button>
+        <ProgressBar variant='warning' now={this.props.pints} max={this.state.maxKeg} label={`${this.props.pints} pints`}/>
+        <button onClick={() => this.props.updateKegs(this.props.id)} type="button" className="btn btn-info mt-2 bt-2">Sell</button>
 
       </React.Fragment>
     );
@@ -34,6 +21,7 @@ class KegProgress extends React.Component {
  
 KegProgress.propTypes = {
   kegs : PropTypes.string,
+  pints : PropTypes.number,
   updateKegs: PropTypes.func,
   id: PropTypes.string
 }

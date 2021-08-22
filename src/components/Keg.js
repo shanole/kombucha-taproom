@@ -10,7 +10,7 @@ function Keg(props) {
         <p><em>{props.flavor}</em> - {props.price}</p>
         <p>Current stock of kegs: {props.quantity}</p>
       </div>
-      <KegProgress id={props.id} kegs={props.quantity} updateKegs={props.onKegSold}/>
+      <KegProgress id={props.id} kegs={props.quantity} pints={props.pints} updateKegs={props.onKegSold}/>
     </React.Fragment>
   )
 }
@@ -21,6 +21,7 @@ Keg.propTypes = {
   flavor: PropTypes.string.isRequired,
   quantity: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
+  pints: PropTypes.number.isRequired,
   id: PropTypes.string,
   whenKegClicked: PropTypes.func,
   onKegSold: PropTypes.func

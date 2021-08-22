@@ -14,13 +14,13 @@ function NewKegForm(props) {
 
   function handleNewKegForm(event) {
     event.preventDefault();
-    console.log(props);
     props.onNewFormSubmit({
       name: event.target.name.value,
       brand: event.target.brand.value,
       price: event.target.price.value,
       flavor: event.target.flavor.value,
       quantity: event.target.quantity.value,
+      pints: parseInt(event.target.quantity.value) * 124,
       id: v4()
     })
   }
