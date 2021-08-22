@@ -43,7 +43,12 @@ Installation
 
 ## Component Diagrams <a id="diagram"></a>
 
-![component diagram]('https://github.com/shanole/kombucha-taproom/blob/main/kombucha-components.png')
+<details>
+  <summary>Component Diagram</summary>
+
+![component diagram](/kombucha-components.png)
+
+</details>
 
 ## Known Bugs <a id="bugs"></a>
 
