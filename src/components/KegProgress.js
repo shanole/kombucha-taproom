@@ -12,10 +12,12 @@ class KegProgress extends React.Component {
 
   handleDecrement = () => {
     let currentKeg = this.state.currentKeg;
-    currentKeg--;
-    this.setState({ currentKeg });
-    if (currentKeg %5 === 0) {
-      this.props.updateKegs(this.props.id)
+    if (currentKeg > 0) {
+      currentKeg--;
+      this.setState({ currentKeg });
+      if (currentKeg %5 === 0) {
+        this.props.updateKegs(this.props.id)
+      }
     }
   }
 
