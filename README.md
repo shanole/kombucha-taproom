@@ -26,6 +26,7 @@ This is a web application built with React JS for a kombucha taproom. You can ad
 - JSX
 - CSS
 - Bootstrap
+- React-Bootstrap
 
 ## Setup/Installation Requirements <a id="setup"></a>
 
@@ -41,6 +42,8 @@ Installation
 - Open project in a development server on your web browser `$ npm start` to open it on http://localhost:3000
 
 ## Component Diagrams <a id="diagram"></a>
+
+![component diagram]('https://github.com/shanole/kombucha-taproom/blob/main/kombucha-components.png')
 
 ## Known Bugs <a id="bugs"></a>
 
