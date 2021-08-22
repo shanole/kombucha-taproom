@@ -14,6 +14,7 @@ function NewKegForm(props) {
 
   function handleNewKegForm(event) {
     event.preventDefault();
+    console.log(props);
     props.onNewFormSubmit({
       name: event.target.name.value,
       brand: event.target.brand.value,

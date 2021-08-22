@@ -9,9 +9,9 @@ class KegControl extends React.Component {
     this.state={
       formVisibleOnPage: false,
       masterKegList: [
-        {name: 'very berry', brand: 'shannon', price: '$7.00', flavor: 'blueberry', id: 0, quantity: 1},
-        {name: 'clear mind', brand: 'brew dr', price: '$7.50', flavor: 'rosemary, mint, sage, and green tea', id: 1, quantity: 2},
-        {name: 'pina colada', brand: 'shannon', price: '$8.00', flavor: 'pineapple', id: 2, quantity: 3}
+        {name: 'very berry', brand: 'shannon', price: '$7.00', flavor: 'blueberry', id: 'sdfsdfsdf', quantity: '1'},
+        {name: 'clear mind', brand: 'brew dr', price: '$7.50', flavor: 'rosemary, mint, sage, and green tea', id: 'sdfdsfdsfdsfsf', quantity: '2'},
+        {name: 'pina colada', brand: 'shannon', price: '$8.00', flavor: 'pineapple', id: 'sdfsdfdsfdsfsdfdsf', quantity: '3'}
       ],
       selectedKeg: null
     };
@@ -40,6 +40,16 @@ class KegControl extends React.Component {
     this.setState({selectedKeg: selectedKeg});
   }
 
+  handleSellKeg = (id) => {
+    const thisKeg = this.state.masterKegList.filter(k => k.id === id)[0];
+    let currQuantity = thisKeg.quantity;
+    const newKeg = {...thisKeg, quantity: (currQuantity-1).toString()};
+    const newMasterKegList = this.state.masterKegList
+      .filter(k => k.id !== id)
+      .concat(newKeg);
+    this.setState({ masterKegList: newMasterKegList })
+  }
+
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
@@ -51,7 +61,7 @@ class KegControl extends React.Component {
       currentlyVisibleState = <NewKegForm onNewFormSubmit={this.handleNewFormSubmission}/>;
       buttonText = "Return to taproom";
     } else {
-      currentlyVisibleState = <KegList kegList = {this.state.masterKegList} onKegSelect={this.handleSelect}/>
+      currentlyVisibleState = <KegList kegList = {(this.state.masterKegList)} onKegSelect={this.handleSelect} onSellingKeg={this.handleSellKeg}/>
       buttonText = "Add new keg";
     }
     return (
