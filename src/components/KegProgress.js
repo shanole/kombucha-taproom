@@ -6,8 +6,8 @@ class KegProgress extends React.Component {
   constructor(props) {
     super(props)
     this.state= { 
-      maxKeg: parseInt(props.kegs)*5,
-      currentKeg: parseInt(props.kegs)*5};
+      maxKeg: parseInt(props.kegs)*124,
+      currentKeg: parseInt(props.kegs)*124};
   }
 
   handleDecrement = () => {
@@ -15,7 +15,7 @@ class KegProgress extends React.Component {
     if (currentKeg > 0) {
       currentKeg--;
       this.setState({ currentKeg });
-      if (currentKeg %5 === 0) {
+      if (currentKeg %124 === 0) {
         this.props.updateKegs(this.props.id)
       }
     }
