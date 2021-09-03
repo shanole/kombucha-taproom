@@ -18,6 +18,8 @@
 
 This is a web application built with React JS for a kombucha taproom. You can add kegs of different flavors and keep track of your stock of pints. You can also click each keg for more details.
 
+[Deployed site on GH PAGES](https://shanole.github.io/kombucha-taproom/)
+
 ## Technologies Used <a id="technologies"></a>
 
 - React.js
@@ -52,7 +54,7 @@ Installation
 
 ## Known Bugs <a id="bugs"></a>
 
-- None known at this time. If you find one, please don't hesitate to contact me about it!
+- New kombucha form currently allows user to submit blank fields.
 
 ## License <a id="license"></a>
 
